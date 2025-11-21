@@ -17,20 +17,34 @@ public class DriverFactory {
         WebDriver webDriver;
 
         switch (browser.toLowerCase()) {
-
             case "chrome":
                 WebDriverManager.chromedriver().setup();
 
                 ChromeOptions options = new ChromeOptions();
+
                 options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
+// Chrome binary (only if not using default installation)
+                options.setBinary("C:\\Users\\QCS\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
+
+// Headless if on Jenkins
                 if (System.getenv("JENKINS_HOME") != null ||
                         System.getProperty("headless", "false").equals("true")) {
                     options.addArguments("--headless=new");
                 }
 
+                // ---------------------------
+                // STABLE OPTIONS FOR BOTH LOCAL & CI
+                // ---------------------------
                 options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--headless");  // or REMOVE this if not needed
                 options.addArguments("--window-size=1920,1080");
+
+                // ---------------------------
+                // REMOVE HARD CODED BINARY (BREAKS CI)
+                // ---------------------------
+                // If you want custom binary, uncomment below:
+                // options.setBinary(ConfigReader.getProperty("chromeBinary"));
 
                 webDriver = new ChromeDriver(options);
                 break;
