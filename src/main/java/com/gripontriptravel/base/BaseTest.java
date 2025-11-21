@@ -1,6 +1,7 @@
 package com.gripontriptravel.base;
 
 
+import com.gripontriptravel.pages.HomePage;
 import com.gripontriptravel.utils.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -11,6 +12,9 @@ public class BaseTest {
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     protected WaitUtils wait;
+    protected HomePage home;
+    protected HelpersUtils help;
+
 
     public WebDriver getDriver() {
         return driverThreadLocal.get();
@@ -32,6 +36,11 @@ public class BaseTest {
 
         wait = new WaitUtils(driver);
         wait.waitForPageLoad();
+
+        home = new HomePage(driver);
+
+        help = new HelpersUtils(driver);
+
     }
 
     @AfterMethod(alwaysRun = true)

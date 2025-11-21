@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
 
 public class WaitUtils {
 
@@ -48,7 +49,7 @@ public class WaitUtils {
                 element.click();
                 return;
             } catch (Exception e) {
-                sleep(300);
+                sleep();
             }
         }
 
@@ -87,7 +88,7 @@ public class WaitUtils {
                 waitForVisibility(element);
                 return;
             } catch (StaleElementReferenceException e) {
-                sleep(300);
+                sleep();
             }
         }
         waitForVisibility(element);
@@ -99,8 +100,11 @@ public class WaitUtils {
 
         // Wait until DOM is interactive OR complete
         ExpectedCondition<Boolean> pageLoadCondition = drv ->
-                ((JavascriptExecutor) drv).executeScript("return document.readyState")
-                        .toString().matches("interactive|complete");
+        {
+            assert drv != null;
+            return Objects.requireNonNull(((JavascriptExecutor) drv).executeScript("return document.readyState"))
+                    .toString().matches("interactive|complete");
+        };
 
         wait.until(pageLoadCondition);
     }
@@ -112,8 +116,11 @@ public class WaitUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         ExpectedCondition<Boolean> ajaxComplete = drv ->
-                (Boolean) ((JavascriptExecutor) drv)
-                        .executeScript("return window.jQuery != undefined && jQuery.active === 0");
+        {
+            assert drv != null;
+            return (Boolean) ((JavascriptExecutor) drv)
+                    .executeScript("return window.jQuery != undefined && jQuery.active === 0");
+        };
 
         try {
             wait.until(ajaxComplete);
@@ -132,15 +139,15 @@ public class WaitUtils {
     }
 
     // ----------------------- SLEEP -----------------------
-    private void sleep(long ms) {
-        try { Thread.sleep(ms); }
+    private void sleep() {
+        try { Thread.sleep(300); }
         catch (InterruptedException ignored) {}
     }
 
     public void waitForUrlToBe(String expectedUrl) {
         try {
             new WebDriverWait(driver, Duration.ofSeconds(15))
-                    .until(driver -> driver.getCurrentUrl().equals(expectedUrl));
+                    .until(driver -> Objects.equals(driver.getCurrentUrl(), expectedUrl));
         } catch (TimeoutException e) {
             throw new AssertionError("Expected URL: " + expectedUrl + ", but got: " + driver.getCurrentUrl());
         }
