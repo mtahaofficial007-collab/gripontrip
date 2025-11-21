@@ -25,6 +25,9 @@ public class RegistrationPage {
         help.waitForPageReady();
     }
 
+    @FindBy(xpath = "//a[@class='text-sm font-semibold transition-colors hover:underline']")
+    private WebElement signInHereLink;
+
     @FindBy(xpath = "//input[@id='signup_name']")
     private WebElement nameField;
 
@@ -72,6 +75,11 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//span[normalize-space()='Error: User already registered']")
     private WebElement userAlreadyExistsMsg;
+
+    public LoginPage clickSignInHereLink(){
+        help.safeClick(signInHereLink);
+        return new LoginPage(driver);
+    }
 
     public void createUserAccount() {
         String timestamp = String.valueOf(System.currentTimeMillis());

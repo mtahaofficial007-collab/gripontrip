@@ -85,8 +85,9 @@ public class HomePage {
         return new LoginPage(driver);
     }
 
-    public void clickLoginLink(){
+    public LoginPage clickLoginLink(){
         help.safeClick(loginLink);
+        return new LoginPage(driver);
     }
 
 
