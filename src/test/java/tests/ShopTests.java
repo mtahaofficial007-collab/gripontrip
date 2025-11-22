@@ -13,7 +13,7 @@ public class ShopTests extends BaseTest {
 
     @Description("Verify Shop Page Loads Successfully")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 1, groups = {"smoke", "sanity", "regression"})
+    @Test(groups = {"smoke", "sanity", "regression"})
     public void testVerifyShopPageLoads() {
         var shop = home.clickShopPageLink();
         shop.shopPageFeaturesVisible();
@@ -22,7 +22,7 @@ public class ShopTests extends BaseTest {
 
     @Description("Verify Product Search Works")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 2, groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"})
     public void testVerifyProductSearchFunctionality() {
         var shop = home.clickShopPageLink();
         shop.shopPageFeaturesVisible();
@@ -32,7 +32,7 @@ public class ShopTests extends BaseTest {
 
     @Description("Verify quick view button")
     @Severity(SeverityLevel.NORMAL)
-    @Test(priority = 3, groups = {"smoke", "sanity", "regression"})
+    @Test(groups = {"smoke", "sanity", "regression"})
     public void testVerifyQuickViewOption() {
         var shop = home.clickShopPageLink();
         shop.shopPageFeaturesVisible();
@@ -43,7 +43,7 @@ public class ShopTests extends BaseTest {
 
     @Description("Verify open product button")
     @Severity(SeverityLevel.NORMAL)
-    @Test(priority = 4, groups = {"smoke", "sanity", "regression"})
+    @Test(groups = {"smoke", "sanity", "regression"})
     public void testVerifyOpenProductOption() {
         var shop = home.clickShopPageLink();
         shop.shopPageFeaturesVisible();
@@ -54,7 +54,7 @@ public class ShopTests extends BaseTest {
 
     @Description("Verify Filter Product")
     @Severity(SeverityLevel.NORMAL)
-    @Test(priority = 5, groups = {"smoke", "sanity", "regression"})
+    @Test(groups = {"smoke", "sanity", "regression"})
     public void testVerifyProductSortFunctionality() {
         var shop = home.clickShopPageLink();
         shop.shopPageFeaturesVisible();

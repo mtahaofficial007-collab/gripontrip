@@ -12,7 +12,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering new user")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 1, groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"})
     public void testRegisterNewUser() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
@@ -21,7 +21,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering hotel account")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 2, groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"})
     public void testRegisterHotelAccount() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
@@ -30,7 +30,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering agency account")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 3, groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"})
     public void testRegisterAgencyAccount() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
@@ -39,7 +39,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering existing user")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 4, groups = {"sanity", "regression"})
+    @Test(groups = {"sanity", "regression"})
     public void testRegisterExistingUser() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
@@ -48,7 +48,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering user with short password")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 5, groups = {"sanity", "regression"})
+    @Test(groups = {"sanity", "regression"})
     public void testRegistrationWithShortPassword() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
@@ -57,7 +57,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering user with wrong email format")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 6, groups = {"sanity", "regression"})
+    @Test(groups = {"sanity", "regression"})
     public void testRegistrationWithWrongEmailFormat() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
@@ -66,7 +66,7 @@ public class RegistrationTests extends BaseTest {
 
     @Description("Registering user with empty fields")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 7, groups = {"sanity", "regression"})
+    @Test( groups = {"sanity", "regression"})
     public void testRegisterUserWithEmptyFields() {
         home.clickLoginLink();
         var register = home.clickRegistrationPageLink();
