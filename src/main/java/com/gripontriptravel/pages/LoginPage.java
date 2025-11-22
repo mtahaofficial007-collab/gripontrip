@@ -22,13 +22,13 @@ public class LoginPage {
         help.waitForPageReady();
     }
 
-    @FindBy(xpath = "//input[@id='login_form_email']")
+    @FindBy(xpath = "//input[@id='login_form_modal_email']")
     private WebElement loginEmailField;
 
-    @FindBy(xpath = "//input[@id='login_form_password']")
+    @FindBy(xpath = "//input[@id='login_form_modal_password']")
     private WebElement loginPasswordField;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//button[@class='ant-btn css-11mmrso ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-lg ant-btn-block']")
     private WebElement loginSignInBtn;
 
     @FindBy(xpath = "//span[normalize-space()='Login successful!']")
