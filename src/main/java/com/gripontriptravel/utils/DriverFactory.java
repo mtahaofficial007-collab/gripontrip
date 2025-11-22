@@ -38,7 +38,7 @@ public class DriverFactory {
                 // ---------------------------
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--window-size=1920,1080");
-
+                options.addArguments("--headless=new");
                 // ---------------------------
                 // REMOVE HARD CODED BINARY (BREAKS CI)
                 // ---------------------------

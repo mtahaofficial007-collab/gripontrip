@@ -14,7 +14,7 @@ public class WaitUtils {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private static final int DEFAULT_TIMEOUT = 12;
+    private static final int DEFAULT_TIMEOUT = 25;
 
     public WaitUtils(WebDriver driver) {
         this.driver = driver;
