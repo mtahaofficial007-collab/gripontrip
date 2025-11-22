@@ -1,6 +1,7 @@
 package tests;
 
 import com.gripontriptravel.base.BaseTest;
+import com.gripontriptravel.utils.ScreenshotUtil;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,6 +16,7 @@ public class ShopTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test(groups = {"smoke", "sanity", "regression"})
     public void testVerifyShopPageLoads() {
+        ScreenshotUtil.takeScreenshot(getDriver());
         var shop = home.clickShopPageLink();
         shop.shopPageFeaturesVisible();
     }
