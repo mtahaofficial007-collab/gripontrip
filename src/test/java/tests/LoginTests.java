@@ -11,47 +11,34 @@ public class LoginTests extends BaseTest {
 
     @Description("Login user with valid credentials")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(groups = {"smoke", "sanity", "regression"})
+    @Test(priority = 1, groups = {"smoke", "sanity", "regression"})
     public void testLoginValidUser() {
-        home.clickLoginLink();
-        var register = home.clickRegistrationPageLink();
-        var login = register.clickSignInHereLink();
+        var login = home.clickLoginLink();
         login.loginValidUser();
     }
 
     @Description("Login user with invalid credentials")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(groups = {"smoke", "sanity", "regression"})
+    @Test(priority = 2, groups = {"smoke", "sanity", "regression"})
     public void testLoginInValidUser() {
-        home.clickLoginLink();
-        var register = home.clickRegistrationPageLink();
-        var login = register.clickSignInHereLink();
+        var login = home.clickLoginLink();
         login.loginInvalidUser();
     }
 
     @Description("Login user with invalid email format")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(groups = {"smoke", "sanity", "regression"})
+    @Test(priority = 3, groups = {"smoke", "sanity", "regression"})
     public void testLoginWithInvalidEmail() {
-        home.clickLoginLink();
-        var register = home.clickRegistrationPageLink();
-        var login = register.clickSignInHereLink();
+        var login = home.clickLoginLink();
         login.loginWithInvalidEmailFormat();
     }
 
     @Description("Login user with empty fields")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(groups = {"smoke", "sanity", "regression"})
+    @Test(priority = 4, groups = {"smoke", "sanity", "regression"})
     public void testLoginWithEmptyFields() {
-        home.clickLoginLink();
-        var register = home.clickRegistrationPageLink();
-        var login = register.clickSignInHereLink();
+        var login = home.clickLoginLink();
         login.loginWithEmptyFields();
     }
-
-
-
-
-
 
 }
