@@ -37,8 +37,11 @@ public class DriverFactory {
                 // STABLE OPTIONS FOR BOTH LOCAL & CI
                 // ---------------------------
                 options.addArguments("--remote-allow-origins=*");
-                options.addArguments("--window-size=2560,1440");
-                options.addArguments("--headless=new");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--disable-gpu");// optional but safe
+                options.addArguments("--disable-dev-shm-usage");  // avoids /dev/shm memory issues
+
+
                 // ---------------------------
                 // REMOVE HARD CODED BINARY (BREAKS CI)
                 // ---------------------------
