@@ -37,7 +37,6 @@ public class DriverFactory {
                 // STABLE OPTIONS FOR BOTH LOCAL & CI
                 // ---------------------------
                 options.addArguments("--remote-allow-origins=*");
-                options.addArguments("--headless");  // or REMOVE this if not needed
                 options.addArguments("--window-size=1920,1080");
 
                 // ---------------------------
