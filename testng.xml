@@ -12,6 +12,7 @@
         <classes>
             <class name="tests.RegistrationTests" />
             <class name="tests.LoginTests" />
+            <class name="tests.ShopTests" />
         </classes>
     </test>
 
@@ -24,6 +25,7 @@
         <classes>
             <class name="tests.RegistrationTests" />
             <class name="tests.LoginTests" />
+            <class name="tests.ShopTests" />
         </classes>
     </test>
 
@@ -37,6 +39,7 @@
         <classes>
             <class name="tests.RegistrationTests" />
             <class name="tests.LoginTests" />
+            <class name="tests.ShopTests" />
         </classes>
     </test>
 </suite>
