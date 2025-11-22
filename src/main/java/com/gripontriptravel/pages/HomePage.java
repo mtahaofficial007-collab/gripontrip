@@ -56,6 +56,7 @@ public class HomePage {
 
 
     public ShopPage clickShopPageLink() {
+        wait.waitForVisibility(signUpPageLink);
         help.safeClick(shopPageLink);
         return new ShopPage(driver);
     }
