@@ -25,8 +25,9 @@ public class WaitUtils {
     }
 
     // ----------------------- VISIBILITY -----------------------
-    public void waitForVisibility(WebElement element) {
+    public WebElement waitForVisibility(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
+        return element;
     }
 
     public void waitForAllVisible(List<WebElement> elements) {

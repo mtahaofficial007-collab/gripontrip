@@ -1,12 +1,13 @@
 package com.gripontriptravel.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.gripontriptravel.utils.WaitUtils;
 import com.gripontriptravel.utils.HelpersUtils;
+
+import java.io.File;
 
 
 public class HomePage {
@@ -54,12 +55,48 @@ public class HomePage {
     @FindBy(xpath = "(//span[normalize-space()=\"Let's Go\"])[1]")
     private WebElement searchBtn;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/nav")
+    private WebElement nav;
 
     public ShopPage clickShopPageLink() {
-        wait.waitForVisibility(shopPageLink);
-        shopPageLink.click();
-        return new ShopPage(driver);
+
+        try {
+            // 1️⃣ Wait for the parent navigation/menu to be visible
+            wait.waitForVisibility(nav);
+
+            // 2️⃣ Wait for the Shop link to exist in DOM
+           WebElement link =  wait.waitForVisibility(shopPageLink);
+
+
+            // 3️⃣ Scroll element into view
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", link);
+
+            // 4️⃣ Wait until clickable
+            wait.waitForClickable(link);
+
+            // 5️⃣ Try normal click
+            try {
+                link.click();
+            } catch (ElementClickInterceptedException e) {
+                // fallback to JS click if normal click fails
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", link);
+            }
+
+            return new ShopPage(driver);
+
+        } catch (TimeoutException e) {
+            // 6️⃣ Take a screenshot for debugging in headless CI
+            try {
+                File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(src, new File("headless_debug_" + System.currentTimeMillis() + ".png"));
+                System.out.println("Screenshot saved due to timeout!");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            throw new RuntimeException("Failed to click Shop link in headless mode", e);
+        }
     }
+
 
     public BookingPage clickBookingPageLink(){
         help.safeClick(bookingPageLink);

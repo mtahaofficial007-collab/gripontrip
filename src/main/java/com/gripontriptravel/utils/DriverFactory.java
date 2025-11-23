@@ -38,6 +38,8 @@ public class DriverFactory {
                 // ---------------------------
                 options.addArguments("--remote-allow-origins=*");
                 options.addArguments("--window-size=1920,1080");
+                options.addArguments("--start-maximized");
+                //options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");// optional but safe
                 options.addArguments("--disable-dev-shm-usage");  // avoids /dev/shm memory issues
 
